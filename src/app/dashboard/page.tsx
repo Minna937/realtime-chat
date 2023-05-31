@@ -1,14 +1,12 @@
 import Button from "@/component/ui/Button";
 import { FC } from 'react';
 
-interface pageProps {
-  
-}
+interface pageProps {}
 
 const page: FC<pageProps> = ({}) => {
   return (
   <div>
-    <Button />
+    <Button>Hello</Button>
   </div>)
 }
 
