@@ -1,10 +1,21 @@
-import { cva } from "class-variance-authority"
-import { FC } from "react"
-
-interface ButtonProps {};
+import { cva, VariantProps } from "class-variance-authority";
+import { ButtonHTMLAttributes, FC } from "react";
 
 const buttonVariants = cva(
-    "active:scal-95 inline-flex items-center jusitify-center rounded-md text-sm font-medium transition-color focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
+    ["active:scal-95",
+        "inline-flex",
+        "items-center",
+        "jusitify-center",
+        "rounded-md",
+        "text-sm",
+        "font-medium",
+        "transition-color",
+        "focus:outline-none",
+        "focus:ring-2",
+        "focus:ring-slate-400",
+        "focus:ring-offset-2",
+        "disabled:opacity-50",
+        "disabled:pointer-events-none"],
     {
         variants: {
             variant: {
@@ -21,10 +32,26 @@ const buttonVariants = cva(
             variant: "default",
             size: "default"
         },
-    })
+    });
 
-const Button: FC<ButtonProps> = ({ }) => {
-    return <div>Button</div>
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+    isLoading?: boolean;
+};
+
+const Button: FC<ButtonProps> = ({
+    className,
+    children,
+    variant,
+    isLoading,
+    size,
+    ...props
+}) => {
+    return (
+        <button className="" disabled={isLoading} {...props}> 
+        {isLoading? <Loader2 /> : null}
+        </button>
+    )
 }
 
 export default Button
