@@ -1,7 +1,8 @@
 'use client';
 
 import Button from "@/components/ui/Button";
-import { FC, useState } from 'react';
+import { FC, useState } from "react";
+import { signIn } from "next-auth/react"
 
 interface pageProps {
 }
@@ -12,12 +13,23 @@ const page: FC<pageProps> = ({ }) => {
     async function loginWithGoogle() {
         setIsLoading(true);
         try {
-
+            await signIn('google')
         } catch (error) {
 
+        } finally {
+            setIsLoading(false);
         }
     };
-    async function loginWithGithub() { };
+    async function loginWithGithub() {
+        setIsLoading(true);
+        try {
+            await signIn('github')
+        } catch (error) {
+
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     return <>
         <div className="
