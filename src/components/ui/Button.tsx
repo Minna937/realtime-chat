@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 
 const buttonVariants = cva(
-    ["active:scal-95",
+    ["active:scale-95",
         "inline-flex",
         "items-center",
         "justify-center",
@@ -22,7 +22,7 @@ const buttonVariants = cva(
     {
         variants: {
             variant: {
-                default: "bg-slate-500 text-white hover:bg-slate-800",
+                default: "bg-slate-600 text-white hover:bg-slate-800",
                 ghost: "bg-transparent hover:text-slate-900 hover:bg-slate-200"
             },
             size: {
@@ -54,7 +54,7 @@ const Button: FC<ButtonProps> = ({
         <button
             className={cn(buttonVariants({ variant, size, className }))}
             disabled={isLoading} {...props}>
-            {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spint" /> : null}
+            {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
             {children}
         </button>
     )
