@@ -22,7 +22,7 @@ const buttonVariants = cva(
     {
         variants: {
             variant: {
-                default: "bg-slate-900 text-white hover:bg-slate-800",
+                default: "bg-slate-500 text-white hover:bg-slate-800",
                 ghost: "bg-transparent hover:text-slate-900 hover:bg-slate-200"
             },
             size: {
