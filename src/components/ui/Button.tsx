@@ -8,7 +8,7 @@ const buttonVariants = cva(
     ["active:scal-95",
         "inline-flex",
         "items-center",
-        "jusitify-center",
+        "justify-center",
         "rounded-md",
         "text-sm",
         "font-medium",
