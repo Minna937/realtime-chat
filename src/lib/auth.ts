@@ -5,17 +5,17 @@ import { db } from "./db";
 import GoogleProvider from "next-auth/providers/google";
 
 function getGoogleCredentials() {
-    const clientId = process.env.GOOGLE_CLIENT_ID
-    const clientSecret = process.env.GOOGLE_CLIENT_SECRET
+    const googleClientId = process.env.GOOGLE_CLIENT_ID
+    const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET
 
-    if (!clientId || clientId?.length === 0) {
-        throw new Error('Missing Google_CLIENT_ID')
+    if (!googleClientId|| googleClientId?.length === 0) {
+        throw new Error('Missing GOOGLE_CLIENT_ID')
     }
-    if (!clientSecret || clientSecret?.length === 0) {
-        throw new Error('Missing Google_CLIENT_Secret')
+    if (!googleClientSecret || googleClientSecret?.length === 0) {
+        throw new Error('Missing GOOGLE_CLIENT_SECREC')
     }
 
-    return { clientId, clientSecret }
+    return { googleClientId, googleClientSecret }
 };
 
 function getGithubCredentials() {
@@ -23,7 +23,7 @@ function getGithubCredentials() {
     const clientSecret = process.env.GITHUB_SECRET
 
     if (!clientId || clientId?.length === 0) {
-        throw new Error('Missing Github_ID')
+        throw new Error('Missing GITHUB_ID')
     }
     if (!clientSecret || clientSecret?.length === 0) {
         throw new Error('Missing GITHUB_Secret')
@@ -43,8 +43,8 @@ export const authOptions: NextAuthOptions = {
     },
     providers: [
         GoogleProvider({
-            clientId: getGoogleCredentials().clientId,
-            clientSecret: getGoogleCredentials().clientSecret
+            clientId: getGoogleCredentials().googleClientId,
+            clientSecret: getGoogleCredentials().googleClientSecret
         }),
         GithubProvider({
             clientId: getGithubCredentials().clientId,
