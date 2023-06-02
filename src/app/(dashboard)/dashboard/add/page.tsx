@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import AddFriendButton from "@/components/AddFriendButton";
 
 const page:FC = () => {
   return <main className="pt-8">
