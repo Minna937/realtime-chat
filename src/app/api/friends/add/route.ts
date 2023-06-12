@@ -2,6 +2,8 @@ import { authOptions } from "@/lib/auth";
 import { addFriendValidator } from "@/lib/validations/add-friend";
 import { getServerSession } from "next-auth";
 import { fetchRedis } from '@/helpers/redis';
+import { db } from "@/lib/db";
+import { z } from "zod";
 
 export async function POST(req: Request) {
     try {
@@ -40,19 +42,30 @@ export async function POST(req: Request) {
             session.user.id
         )) as 0 | 1;
 
-        
         const isAlreadyFriend = (await fetchRedis(
             'sismember',
             `user:${session.user.id}:friends`,
             idToAdd
         )) as 0 | 1;
 
+        if (isAlreadyFriend) {
+            return new Response('Already friends with this user', { status: 400 })
+        };
+
         if (isAlreadyAdded) {
             return new Response('Already added this user', { status: 400 })
         };
 
-        //valid request
-    } catch (error) {
+        //valid request, send friend request
 
+        db.sadd(`user:${idToAdd}:incoming_friend_requests`, session.user.id);
+        return new Response('OK');
+
+    } catch (error) {
+        if (error instanceof z.ZodError){
+            return new Response('Invalid request payload',{status:442})
+        };
+
+        return new Response('Invalid request',{status:422});
     }
 }
