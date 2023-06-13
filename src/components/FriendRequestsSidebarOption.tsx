@@ -50,10 +50,9 @@ const FriendRequestsSidebarOption: FC<FriendRequestsSidebarOptionProps> = ({
             <User className="h-4 w-4" />
         </div>
         <p className="truncate">Friend requests</p>
-
         {unseenRequestCount > 0 ? (
             <div className="rounded-full w-5 h-5 text-xs flex justify-center items-center text-white bg-indigo-600">
-                2
+                {unseenRequestCount}
             </div>
         ) : null}
     </Link>
