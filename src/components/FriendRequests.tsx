@@ -28,7 +28,7 @@ const FriendRequests: FC<FriendRequestsProps> = ({
                         className="flex gap-4 items-center">
 
                         <UserPlus className="text-black" />
-                        <p className="font-medium text-lg">
+                        <p className="font-medium text-lg -ml-2">
                             {request.senderEmail}
                         </p>
                         <button
@@ -36,6 +36,7 @@ const FriendRequests: FC<FriendRequestsProps> = ({
                             className="
                     w-8 
                     h-8 
+                    ml-4
                     bg-indigo-600
                     hover:bg-indigo-700
                     grid
