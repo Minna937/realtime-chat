@@ -48,7 +48,6 @@ const Layout = async ({ children }: LayoutProps) => {
         bg-white
         px-6
         ">
-
                 <Link
                     href="/dashboard"
                     className="flex h-16 shrink-0 items-center">
@@ -69,7 +68,7 @@ const Layout = async ({ children }: LayoutProps) => {
                 </div>
                 <nav className="flex flex-1 flex-col">
                     <ul role="list"
-                        className="flex flex-1 flex-col gap-y-7">
+                        className="flex flex-1 flex-col gap-y-5">
                         <li>
                             //chats that the user has
                         </li>
@@ -78,10 +77,51 @@ const Layout = async ({ children }: LayoutProps) => {
                                 Overview
                             </div>
                         </li>
-                        <ul role="list" className="-mx-2 mt-2 space-y-1">
-                            {sidebarOptions.map((option)=>{
+                        <ul role="list" className="-mx-2 -mt-2 space-y-1">
+                            {sidebarOptions.map((option) => {
                                 const Icon = Icons[option.Icon]
-                                return ()
+                                return (
+                                    <li key={option.id}>
+                                        <Link href={option.href}
+                                            className="
+                                        text-gray-700
+                                        hover:text-indigo-600
+                                        hover:bg-gray-50
+                                           group 
+                                           flex 
+                                           gap-3 
+                                           rounded-md
+                                           p-2
+                                           text-sm
+                                           leading-6 
+                                           font-semibold
+                                           ">
+                                            <span 
+                                            className="
+                                            text-gray-400
+                                            border-gray-200 
+                                            group-hover:border-indigo-600 
+                                            group-hover:text-indigo-600 
+                                            flex 
+                                            h-6 
+                                            w-6 
+                                            shrink-0 
+                                            items-center 
+                                            justify-center 
+                                            rounded-lg 
+                                            border 
+                                            text-[0.625rem] 
+                                            font-medium
+                                            bg-white">
+                                                <Icon className="h-4 w-f" />
+                                            </span>
+
+                                            <span className="truncate">
+                                                {option.name}
+                                            </span>
+                                        </Link>
+                                    </li>
+                                )
                             })}
                         </ul>
                     </ul>
