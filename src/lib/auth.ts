@@ -3,12 +3,13 @@ import GithubProvider from "next-auth/providers/github";
 import { UpstashRedisAdapter } from "@next-auth/upstash-redis-adapter";
 import { db } from "./db";
 import GoogleProvider from "next-auth/providers/google";
+import { fetchRedis } from "@/helpers/redis";
 
 function getGoogleCredentials() {
     const googleClientId = process.env.GOOGLE_CLIENT_ID
     const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET
 
-    if (!googleClientId|| googleClientId?.length === 0) {
+    if (!googleClientId || googleClientId?.length === 0) {
         throw new Error('Missing GOOGLE_CLIENT_ID')
     }
     if (!googleClientSecret || googleClientSecret?.length === 0) {
@@ -53,13 +54,15 @@ export const authOptions: NextAuthOptions = {
     ],
     callbacks: {
         async jwt({ token, user }) {
-            const dbUser = (await db.get(`user:${token.id}`)) as User | null;
+            const dbUserResult = (await fetchRedis("get", `user:${token.id}`)) as string | null;
 
-            if (!dbUser) {
+            if (!dbUserResult) {
                 token.id = user!.id;
                 return token;
             }
 
+            const dbUser = JSON.parse(dbUserResult) as User;
+            
             return {
                 id: dbUser.id,
                 name: dbUser.name,
