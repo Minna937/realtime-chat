@@ -3,6 +3,7 @@ import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 import { FC } from 'react';
+import FriendRequests from "@/components/FriendRequests";
 
 const page = async () => {
     const session = await getServerSession(authOptions);
@@ -28,7 +29,9 @@ const page = async () => {
     <main className="pt-8 pl-6">
     <h1 className="font-bold text-5xl mb-8">Add a friend</h1>
     <div className="flex flex-col gap-4">
-        <FriendRequests />
+        <FriendRequests 
+        incomingFriendRequests={incomingFriendRequests}
+        sessionId={session.user.id} />
     </div>
   </main>)
 };
