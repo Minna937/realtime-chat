@@ -21,14 +21,14 @@ const FriendRequests: FC<FriendRequestsProps> = ({
     );
 
     const acceptFriend = async (senderId: string) => {
-        await axios.post('/api/requests/accept', { id: senderId });
+        await axios.post('/api/friends/accept', { id: senderId });
         setFriendRequests((prev) => prev.filter((req) => req.senderId !== senderId));
         router.refresh();
     };
 
 
     const denyFriend = async (senderId: string) => {
-        await axios.post('/api/requests/deny', { id: senderId });
+        await axios.post('/api/friends/deny', { id: senderId });
         setFriendRequests((prev) => prev.filter((req) => req.senderId !== senderId));
         router.refresh();
     };
@@ -50,7 +50,7 @@ const FriendRequests: FC<FriendRequestsProps> = ({
                             {request.senderEmail}
                         </p>
                         <button
-                            onClick={() => acceptFriend}
+                            onClick={() => acceptFriend(request.senderId)}
                             aria-label="accept friend"
                             className="
                     w-8 
@@ -68,7 +68,7 @@ const FriendRequests: FC<FriendRequestsProps> = ({
                         </button>
 
                         <button
-                            onClick={() => denyFriend}
+                            onClick={() => denyFriend(request.senderId)}
                             aria-label="deny friend"
                             className="
                     w-8 
