@@ -50,6 +50,7 @@ const FriendRequests: FC<FriendRequestsProps> = ({
                             {request.senderEmail}
                         </p>
                         <button
+                            onClick={() => acceptFriend}
                             aria-label="accept friend"
                             className="
                     w-8 
@@ -67,6 +68,7 @@ const FriendRequests: FC<FriendRequestsProps> = ({
                         </button>
 
                         <button
+                            onClick={() => denyFriend}
                             aria-label="deny friend"
                             className="
                     w-8 
