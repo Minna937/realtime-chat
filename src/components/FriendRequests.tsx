@@ -36,7 +36,7 @@ const FriendRequests: FC<FriendRequestsProps> = ({
     return (
         <>
             {friendRequests.length === 0 ? (
-                <p className="text-sm text-zinc-600">
+                <p className="text-sm text-zinc-500">
                     Nothing to show here...
                 </p>
             ) : (

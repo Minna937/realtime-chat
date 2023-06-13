@@ -26,7 +26,7 @@ const FriendRequestsSidebarOption: FC<FriendRequestsSidebarOptionProps> = ({
         items-center
         gap-x-3
         rounded-md
-        p-2
+        -mt-2
         text-sm
         leading-6
         font-semibold">
