@@ -146,9 +146,7 @@ const Layout = async ({ children }: LayoutProps) => {
                                 sessionId={session.user.id}
                                 initialUnseenRequestCount={unseenRequestCount} />
                         </li>
-
                         </ul>
-
 
                         <li className="
                         -mx-6 
