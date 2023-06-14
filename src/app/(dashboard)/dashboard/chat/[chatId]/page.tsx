@@ -23,8 +23,8 @@ async function getChatMessages(chatId: string) {
       -1
     );
 
-    const dbMessgaes = results.map((message) => JSON.parse(message) as Message);
-    const reversedDbMessages = dbMessgaes.reverse();
+    const dbMessages = results.map((message) => JSON.parse(message) as Message);
+    const reversedDbMessages = dbMessages.reverse();
     const messages = messageArrayValidator.parse(reversedDbMessages);
 
     return messages;
@@ -99,7 +99,9 @@ const page = async ({ params }: PageProps) => {
         </div>
       </div>
     </div>
-    <Messages />
+    <Messages 
+    initialMessages={initialMessages}
+    sessionId={session.user.id} />
   </div>
 };
 

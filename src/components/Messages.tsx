@@ -1,14 +1,25 @@
 "use client";
 
-import { FC, useRef } from 'react';
+import { FC, useRef, useState } from 'react';
+import { Message } from "@/lib/validations/message";
+import { cn } from "@/lib/utils";
 
-interface MessagesProps { };
+interface MessagesProps {
+    initialMessages: Message[]
+    sessionId: string
+};
 
-const Messages: FC<MessagesProps> = ({ }) => {
+const Messages: FC<MessagesProps> = ({
+    initialMessages,
+    sessionId
+}) => {
+    const [messages, setMessages] = useState<Message[]>(initialMessages);
+
     const scrollDownRef = useRef<HTMLDivElement | null>(null);
 
-    return <div id="messages"
-        className="
+    return (
+        <div id="messages"
+            className="
   flex
   h-full
   flex-1
@@ -21,9 +32,27 @@ const Messages: FC<MessagesProps> = ({ }) => {
   scrollbar-track-blue-lighter
   scrollbar-w-2
   scolling-touch"
-    >
-        <div ref={scrollDownRef} />
-    </div>
+        >
+            <div ref={scrollDownRef} />
+
+            {messages.map((message, index) => {
+                const isCurrentUser = message.senderId === sessionId;
+
+                const hasNextMessageFromSameUser = messages[index - 1]?.senderId === messages[index].senderId;
+                return (
+                    <div key={`${message.id}-${message.timestamp}`}
+                        className="chat-message">
+                        <div className={cn("flex items-end",{
+                            "justify-end":isCurrentUser,
+                        })}></div>
+
+                    </div>
+
+                )
+
+            })}
+        </div>
+    )
 };
 
 export default Messages;
