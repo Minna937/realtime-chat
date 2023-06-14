@@ -5,6 +5,7 @@ import { messageArrayValidator } from "@/lib/validations/message";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import Messages from "@/components/Messages";
 import { FC } from 'react';
 
 interface PageProps {
@@ -98,6 +99,7 @@ const page = async ({ params }: PageProps) => {
         </div>
       </div>
     </div>
+    <Messages />
   </div>
 };
 
