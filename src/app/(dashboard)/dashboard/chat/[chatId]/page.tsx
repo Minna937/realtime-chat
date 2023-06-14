@@ -1,6 +1,7 @@
 import { fetchRedis } from "@/helpers/redis";
 import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { messageArrayValidator } from "@/lib/validations/message";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 import { FC } from 'react';
@@ -24,7 +25,9 @@ async function getChatMessages(chatId: string) {
 
     const reversedDbMessages = dbMessgaes.reverse();
 
-    const messages = 
+    const messages = messageArrayValidator.parse(reversedDbMessages);
+
+    return messages;
   } catch (error) {
     notFound();
   }

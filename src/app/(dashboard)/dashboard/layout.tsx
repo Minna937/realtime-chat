@@ -8,6 +8,7 @@ import Image from "next/image";
 import SignOutButton from "@/components/SignOutButton";
 import FriendRequestsSidebarOption from "@/components/FriendRequestsSidebarOption";
 import { fetchRedis } from "@/helpers/redis";
+import { getFriendsByUserId } from "@/helpers/get-friends-by-user-id";
 
 interface LayoutProps {
     children: ReactNode
@@ -32,6 +33,8 @@ const sidebarOptions: SidebarOption[] = [
 const Layout = async ({ children }: LayoutProps) => {
     const session = await getServerSession(authOptions);
     if (!session) notFound();
+
+    const friends = await getFriendsByUserId(session.user.id);
 
     const unseenRequestCount = (
         (await fetchRedis(
