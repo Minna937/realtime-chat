@@ -133,7 +133,7 @@ const Layout = async ({ children }: LayoutProps) => {
                                                 text-[0.625rem]
                                                 font-medium
                                                 bg-white">
-                                                <Icon className="h-4 w-f" />
+                                                <Icon className="h-4 w-4" />
                                             </span>
 
                                             <span className="truncate">

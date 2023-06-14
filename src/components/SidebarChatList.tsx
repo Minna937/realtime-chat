@@ -3,6 +3,7 @@
 import { chatHrefConstructor } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 import { FC, useEffect, useState } from 'react';
+import Image from "next/image";
 
 interface SidearChatListProps {
   friends: User[]
@@ -37,11 +38,50 @@ const SidearChatList: FC<SidearChatListProps> = ({ friends, sessionId }) => {
         }).length;
 
         return <li key={friend.id}>
+
           <a href={`/dashboard/chat/${chatHrefConstructor(
             sessionId,
             friend.id
-          )}`}>
-            hello
+          )}`}
+            className="
+          text-gray-700
+          hover:text-indigo-600
+          hover:bg-gray-50
+          group
+          flex
+          items-center
+          gap-x-3
+          rounded-md
+          p-2
+          text-sm
+          leading-6
+          font-semibold">
+            <div className="relative h-7 w-7 bg-gray-50">
+              <Image
+                fill
+                referrerPolicy="no-referrer"
+                className="rounded-full"
+                src={friend.image || ""}
+                alt="Your profile picture"
+              />
+            </div>
+            {friend.name}
+            {unseenMessagesCount > 0 ? (
+              <div className="
+              bg-indigo-600
+              font-medium
+              text-xs
+              text-white
+              w-4
+              h-4
+              rounded-full
+              flex
+              justify-center
+              items-center
+              ">
+                {unseenMessagesCount}
+              </div>
+            ) : null}
           </a>
         </li>
       })}
