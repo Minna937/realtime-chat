@@ -4,10 +4,10 @@ import { FC, useRef, useState } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 
 interface ChatInputProps {
-    chatPartner:User
+    chatPartner: User
 };
 
-const ChatInput: FC<ChatInputProps> = ({chatPartner }) => {
+const ChatInput: FC<ChatInputProps> = ({ chatPartner }) => {
     const textareaRef = useRef<HTMLTextAreaElement | null>(null);
     const [input, setInput] = useState<string>("");
 
@@ -48,6 +48,14 @@ const ChatInput: FC<ChatInputProps> = ({chatPartner }) => {
                     focus:ring-0
                     sm:text-sm 
                     sm:leading-6" />
+
+                <div onClick={() => { textareaRef.current?.focus }}
+                    className="py-2"
+                    aria-hidden="true">
+                    <div className="py-px">
+                        <div className="h-9"></div>
+                    </div>
+                </div>
             </div>
         </div>
     )
