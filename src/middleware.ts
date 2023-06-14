@@ -28,7 +28,7 @@ export default withAuth(
             return NextResponse.redirect(new URL("/dashboard", req.url));
         };
     },{
-        //to avoid infenite redirects
+        //to avoid infenite redirect
       callbacks:{
         async authorized(){
             return true
