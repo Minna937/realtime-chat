@@ -9,6 +9,7 @@ import SignOutButton from "@/components/SignOutButton";
 import FriendRequestsSidebarOption from "@/components/FriendRequestsSidebarOption";
 import { fetchRedis } from "@/helpers/redis";
 import { getFriendsByUserId } from "@/helpers/get-friends-by-user-id";
+import SidebarChatList from "@/components/SidebarChatList";
 
 interface LayoutProps {
     children: ReactNode
@@ -73,19 +74,20 @@ const Layout = async ({ children }: LayoutProps) => {
                 "/>
                 </Link>
 
-                <div className="
+                {friends.length >= 0 ? (<div className="
            text-xs
            font-semibold
            leading-6
            text-gray-400
            ">
                     Your chats
-                </div>
+                </div>) : null}
+
                 <nav className="flex flex-1 flex-col">
                     <ul role="list"
                         className="flex flex-1 flex-col gap-y-5">
                         <li>
-                            //chats that the user has
+                          <SidebarChatList friends={friends}/>
                         </li>
                         <li>
                             <div className="text-xs font-semibold leading-6 text-gray-400">
@@ -138,14 +140,14 @@ const Layout = async ({ children }: LayoutProps) => {
                                     </li>
                                 )
                             })}
-                        </ul>
-
+                            
                         <li>
                             <FriendRequestsSidebarOption
                                 sessionId={session.user.id}
                                 initialUnseenRequestCount={unseenRequestCount} />
                         </li>
 
+                        </ul>
 
 
                         <li className="
