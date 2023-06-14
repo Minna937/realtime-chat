@@ -6,6 +6,7 @@ import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Messages from "@/components/Messages";
+import ChatInput from "@/components/ChatInput";
 import { FC } from 'react';
 
 interface PageProps {
@@ -102,6 +103,7 @@ const page = async ({ params }: PageProps) => {
     <Messages 
     initialMessages={initialMessages}
     sessionId={session.user.id} />
+    <ChatInput />
   </div>
 };
 
