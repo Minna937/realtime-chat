@@ -21,14 +21,14 @@ export default withAuth(
             return NextResponse.next();
         }
         if (!isAuth && isAccessingSensitiveRoute) {
-            return NextResponse.redirect(new URL("/dashboard", req.url));
+            return NextResponse.redirect(new URL("/login", req.url));
         };
 
         if (pathname === "/") {
             return NextResponse.redirect(new URL("/dashboard", req.url));
         };
     },{
-        //to avoid infenite redirect
+        //to avoid infenite redirect;
       callbacks:{
         async authorized(){
             return true
