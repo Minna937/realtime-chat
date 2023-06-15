@@ -36,6 +36,7 @@ export async function POST(req: Request) {
         const messageData: Message = {
             id: nanoid(),
             senderId: session.user.id,
+            receivedId:friendId,
             text,
             timestamp,
         };
