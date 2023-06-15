@@ -31,7 +31,7 @@ const Messages: FC<MessagesProps> = ({
   scrollbar-thumb-rounded
   scrollbar-track-blue-lighter
   scrollbar-w-2
-  scolling-touch"
+  scrolling-touch"
         >
             <div ref={scrollDownRef} />
 
@@ -50,7 +50,7 @@ const Messages: FC<MessagesProps> = ({
                                 "order-2 items-start": !isCurrentUser
                             })}>
                                 <span className={cn("px-4 py-2 rounded-lg inline-block", {
-                                    "bg-indigo-600": isCurrentUser,
+                                    "bg-indigo-900 text-white": isCurrentUser,
                                     "bg-gray-200 text-gray-900": !isCurrentUser,
                                     "rounded-br-none": !hasNextMessageFromSameUser && isCurrentUser,
                                     "rounded-bl-none": !hasNextMessageFromSameUser && !isCurrentUser

@@ -34,8 +34,8 @@ export async function POST(req: Request) {
         const timestamp = Date.now();
 
         const messageData: Message = {
-            id:nanoid(),
-            senderId:session.user.id,
+            id: nanoid(),
+            senderId: session.user.id,
             text,
             timestamp,
         };
@@ -46,9 +46,13 @@ export async function POST(req: Request) {
         await db.zadd(`chat:${chatId}:messages`, {
             score: timestamp,
             member: JSON.stringify(message)
-        })
+        });
 
+        return new Response("Success")
     } catch (error) {
-
-    }
+        if (error instanceof Error) {
+            return new Response(error.message, { status: 500 })
+        }
+        return new Response("Internal Server Error",{ status: 500 } )
+    };
 }
