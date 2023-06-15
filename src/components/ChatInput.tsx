@@ -2,18 +2,31 @@
 
 import { FC, useRef, useState } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
+import Button from "./ui/Button";
+import axios from "axios";
 
 interface ChatInputProps {
     chatPartner: User
+    chatId: string
 };
 
-const ChatInput: FC<ChatInputProps> = ({ chatPartner }) => {
+const ChatInput: FC<ChatInputProps> = ({ chatPartner, chatId }) => {
     const textareaRef = useRef<HTMLTextAreaElement | null>(null);
     const [input, setInput] = useState<string>("");
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const sendMessage = () => { };
+    const sendMessage = async () => {
+        setIsLoading(true);
+        try {
+            await axios.post("/api/message/send", { text: input, chatId })
+        } catch (error) {
+
+        }
+
+    };
     return (
-        <div className="border-t border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
+        //deleted px-4
+        <div className="border-t border-gray-200 pt-4 mb-2 sm:mb-0">
             <div className="
         relative 
         flex-1 
@@ -54,6 +67,17 @@ const ChatInput: FC<ChatInputProps> = ({ chatPartner }) => {
                     aria-hidden="true">
                     <div className="py-px">
                         <div className="h-9"></div>
+                    </div>
+                </div>
+
+                <div className="absolute right-0 bottom-0 flex justify-between py-2 pl-3 pr-2">
+                    <div className="flex-shrink-0">
+                        <Button
+                            isLoading={isLoading}
+                            onClick={sendMessage}
+                            type="submit">
+                            Send
+                        </Button>
                     </div>
                 </div>
             </div>
