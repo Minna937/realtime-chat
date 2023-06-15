@@ -70,7 +70,7 @@ const Messages: FC<MessagesProps> = ({
                                     </span>
                                 </span>
                             </div>
-                            <div className={cn("relative w-6 h-6 mb-2", {
+                            <div className={cn("relative w-6 h-6", {
                                 "order-2": isCurrentUser,
                                 "order-1": !isCurrentUser,
                                 "invisible": hasNextMessageFromSameUser
