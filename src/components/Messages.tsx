@@ -1,6 +1,8 @@
 "use client";
 
-import { FC, useRef, useState } from 'react';
+import { FC, useRef, useState, useEffect } from 'react';
+import { toPusherKey } from "@/lib/utils";
+import { pusherClient } from "@/lib/pusher";
 import { Message } from "@/lib/validations/message";
 import { cn } from "@/lib/utils";
 import format from "date-fns/format";
@@ -9,6 +11,7 @@ import Image from "next/image";
 interface MessagesProps {
     initialMessages: Message[]
     sessionId: string,
+    chatId: string
     sessionImg: string | null | undefined
     chatPartner: User
 };
@@ -17,9 +20,29 @@ const Messages: FC<MessagesProps> = ({
     initialMessages,
     sessionId,
     sessionImg,
-    chatPartner
+    chatPartner,
+    chatId
 }) => {
     const [messages, setMessages] = useState<Message[]>(initialMessages);
+
+    useEffect(() => {
+        pusherClient.subscribe(
+            toPusherKey(`chat:${chatId}`)
+        )
+
+        const messageHandler = (message: Message) => {
+            setMessages((prev) => [message, ...prev])
+        }
+
+        pusherClient.bind('incoming_message', messageHandler)
+
+        return () => {
+            pusherClient.unsubscribe(
+                toPusherKey(`chat:${chatId}`)
+            )
+            pusherClient.unbind('incoming_message', messageHandler)
+        }
+    }, []);
 
     const scrollDownRef = useRef<HTMLDivElement | null>(null);
     const formatTimestamp = (timestamp: number) => {
@@ -77,11 +100,11 @@ const Messages: FC<MessagesProps> = ({
                             })}>
                                 <Image
                                     fill
-                                    src={isCurrentUser ? (sessionImg as string) : chatPartner.image} 
+                                    src={isCurrentUser ? (sessionImg as string) : chatPartner.image}
                                     alt="Profile picture"
                                     referrerPolicy="no-referrer"
                                     className="rounded-full"
-                                    />
+                                />
                             </div>
                         </div>
                     </div>

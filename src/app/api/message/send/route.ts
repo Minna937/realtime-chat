@@ -4,6 +4,8 @@ import { getServerSession } from "next-auth";
 import { db } from "@/lib/db";
 import { nanoid } from "nanoid";
 import { messageValidator } from "@/lib/validations/message";
+import { pusherServer } from "@/lib/pusher";
+import { toPusherKey } from "@/lib/utils";
 
 export async function POST(req: Request) {
     try {
@@ -36,12 +38,18 @@ export async function POST(req: Request) {
         const messageData: Message = {
             id: nanoid(),
             senderId: session.user.id,
-            receivedId:friendId,
+            receivedId: friendId,
             text,
             timestamp,
         };
 
         const message = messageValidator.parse(messageData);
+
+        //notify all connected chat room clients
+        pusherServer.trigger(toPusherKey(
+            `chat:${chatId}`),
+            "incoming_message",
+            message);
 
         //all valid, send the message
         await db.zadd(`chat:${chatId}:messages`, {
@@ -54,6 +62,6 @@ export async function POST(req: Request) {
         if (error instanceof Error) {
             return new Response(error.message, { status: 500 })
         }
-        return new Response("Internal Server Error",{ status: 500 } )
+        return new Response("Internal Server Error", { status: 500 })
     };
 }
