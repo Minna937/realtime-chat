@@ -17,7 +17,9 @@ const ChatInput: FC<ChatInputProps> = ({ chatPartner, chatId }) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const sendMessage = async () => {
+        if (!input) return;
         setIsLoading(true);
+        
         try {
             // await new Promise((resolve) => setTimeout(resolve, 1000))
             await axios.post("/api/message/send", { text: input, chatId });
@@ -29,7 +31,7 @@ const ChatInput: FC<ChatInputProps> = ({ chatPartner, chatId }) => {
             setIsLoading(false)
         }
     };
-    
+
     return (
         //deleted px-4
         <div className="border-t border-gray-200 pt-4 mb-2 sm:mb-0">
