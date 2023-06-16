@@ -3,6 +3,8 @@ import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { z } from "zod";
 import { db } from "@/lib/db";
+import { pusherServer } from "@/lib/pusher";
+import { toPusherKey } from "@/lib/utils";
 
 export async function POST(req: Request) {
     try {
@@ -33,6 +35,9 @@ export async function POST(req: Request) {
             return new Response("No friend request", { status: 400 })
         };
 
+        //notify added user
+        pusherServer.trigger(toPusherKey(`user:${idToAdd}:friends`),"new_friend",{});
+
         await db.sadd(`user:${session.user.id}:friends`, idToAdd);
         await db.sadd(`user:${idToAdd}:friends`, session.user.id);
 
@@ -46,6 +51,6 @@ export async function POST(req: Request) {
         if (error instanceof z.ZodError) {
             return new Response("Invalid request payload", { status: 422 });
         }
-        return new Response("Invalid request",{status:400});
+        return new Response("Invalid request", { status: 400 });
     }
 }
