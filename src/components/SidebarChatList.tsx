@@ -1,9 +1,10 @@
 "use client";
 
-import { chatHrefConstructor } from "@/lib/utils";
+import { chatHrefConstructor, toPusherKey } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 import { FC, useEffect, useState } from 'react';
 import Image from "next/image";
+import { pusherClient } from "@/lib/pusher";
 
 interface SidearChatListProps {
   friends: User[]
@@ -17,12 +18,34 @@ const SidearChatList: FC<SidearChatListProps> = ({ friends, sessionId }) => {
   const [unseenMessages, setUnseenMessages] = useState<Message[]>([]);
 
   useEffect(() => {
+    pusherClient.subscribe(toPusherKey(`user:${sessionId}:chats`));
+    pusherClient.subscribe(toPusherKey(`user:${sessionId}:friends`));
+
+    const newFriendHandler = () => {
+      router.refresh();
+    };
+
+    const chatHandler=()=>{
+      console.log("new chat message");
+    }
+
+    pusherClient.bind("new_message", chatHandler);
+    pusherClient.bind("new_friend", newFriendHandler);
+
+    return () => {
+      pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:chats`));
+      pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:friends`));
+    };
+  });
+
+
+  useEffect(() => {
     if (pathname?.includes('chat')) {
       setUnseenMessages((prev) => {
         return prev.filter((msg) => !pathname.includes(msg.senderId))
       })
     }
-  }, [pathname])
+  }, [pathname]);
 
   return (
     <ul role="list"
