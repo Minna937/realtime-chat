@@ -6,7 +6,14 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-
+    container: {
+      center:true,
+      // padding:"0.5rem",
+      screens:{
+        "2xl":"1360px"
+      },
+    },
+    extend:{},
   },
   plugins: [require('@tailwindcss/forms')],
 }
