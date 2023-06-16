@@ -5,6 +5,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { FC, useEffect, useState } from 'react';
 import Image from "next/image";
 import { pusherClient } from "@/lib/pusher";
+import { toast } from "react-hot-toast";
+import UnseenChatToast from "./UnseenChatToast";
 
 interface SidearChatListProps {
   friends: User[]
@@ -31,7 +33,16 @@ const SidearChatList: FC<SidearChatListProps> = ({ friends, sessionId }) => {
     };
 
     const chatHandler = (message: ExtendedMessage) => {
-  
+      const shouldNotify = pathname !==
+        `/dashboard/chat/${chatHrefConstructor(sessionId, message.senderId)}`;
+
+      if (!shouldNotify) return;
+
+      //shoud be notified
+      toast.custom((t) =>(
+        //custom component
+        <UnseenChatToast />
+      ))
     };
 
 
