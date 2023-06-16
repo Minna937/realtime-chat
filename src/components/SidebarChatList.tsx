@@ -11,6 +11,11 @@ interface SidearChatListProps {
   sessionId: string
 };
 
+interface ExtendedMessage extends Message {
+  senderImg: string
+  senderName: string
+}
+
 const SidearChatList: FC<SidearChatListProps> = ({ friends, sessionId }) => {
   const router = useRouter();
   const pathname = usePathname();
@@ -25,9 +30,10 @@ const SidearChatList: FC<SidearChatListProps> = ({ friends, sessionId }) => {
       router.refresh();
     };
 
-    const chatHandler=()=>{
-      console.log("new chat message");
-    }
+    const chatHandler = (message: ExtendedMessage) => {
+  
+    };
+
 
     pusherClient.bind("new_message", chatHandler);
     pusherClient.bind("new_friend", newFriendHandler);
