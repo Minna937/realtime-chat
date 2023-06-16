@@ -42,7 +42,7 @@ const Messages: FC<MessagesProps> = ({
             )
             pusherClient.unbind('incoming_message', messageHandler)
         }
-    }, []);
+    }, [chatId]);
 
     const scrollDownRef = useRef<HTMLDivElement | null>(null);
     const formatTimestamp = (timestamp: number) => {
