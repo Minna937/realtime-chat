@@ -39,10 +39,19 @@ const SidearChatList: FC<SidearChatListProps> = ({ friends, sessionId }) => {
       if (!shouldNotify) return;
 
       //shoud be notified
-      toast.custom((t) =>(
+      toast.custom((t) => (
         //custom component
-        <UnseenChatToast />
-      ))
+        <UnseenChatToast
+          t={t}
+          sessionId={sessionId}
+          senderId={message.senderId}
+          senderImg={message.senderImg}
+          senderMessage={message.text}
+          senderName={message.senderName}
+        />
+      ));
+
+      setUnseenMessages((prev) => [...prev, message]);
     };
 
 
@@ -52,6 +61,8 @@ const SidearChatList: FC<SidearChatListProps> = ({ friends, sessionId }) => {
     return () => {
       pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:chats`));
       pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:friends`));
+      pusherClient.unbind('new_message', chatHandler)
+      pusherClient.unbind('new_friend', newFriendHandler)
     };
   });
 
