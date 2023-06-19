@@ -24,6 +24,7 @@ interface MobileChatLayoutProps {
 const MobileChatLayout: FC<MobileChatLayoutProps> = ({ friends, session, sidebarOptions, unseenRequestCount }) => {
     const [open, setOpen] = useState<boolean>(false)
 
+    //close the slideover menu
     const pathname = usePathname()
 
     useEffect(() => {
