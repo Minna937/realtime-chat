@@ -7,6 +7,7 @@ import Image from "next/image";
 import { pusherClient } from "@/lib/pusher";
 import { toast } from "react-hot-toast";
 import UnseenChatToast from "./UnseenChatToast";
+import { User } from "next-auth";
 
 interface SidearChatListProps {
   friends: User[]
@@ -23,13 +24,14 @@ const SidearChatList: FC<SidearChatListProps> = ({ friends, sessionId }) => {
   const pathname = usePathname();
 
   const [unseenMessages, setUnseenMessages] = useState<Message[]>([]);
+  const [activeChats, setActiveChats] = useState<User[]>(friends);
 
   useEffect(() => {
     pusherClient.subscribe(toPusherKey(`user:${sessionId}:chats`));
     pusherClient.subscribe(toPusherKey(`user:${sessionId}:friends`));
 
-    const newFriendHandler = () => {
-      router.refresh();
+    const newFriendHandler = (newFriend:User) => {
+     setActiveChats((prev)=>[...prev,newFriend])
     };
 
     const chatHandler = (message: ExtendedMessage) => {
@@ -83,7 +85,7 @@ const SidearChatList: FC<SidearChatListProps> = ({ friends, sessionId }) => {
     -mx-2
     space-y-1
     ">
-      {friends.sort().map((friend) => {
+      {activeChats.sort().map((friend) => {
         const unseenMessagesCount = unseenMessages.filter((unseenMessage) => {
           return unseenMessage.senderId === friend.id
         }).length;
