@@ -42,7 +42,12 @@ const Layout = async ({ children }: LayoutProps) => {
     return (
         <div className="w-full flex h-screen">
         <div className="md:hidden">
-           <MobileChatLayout />
+           <MobileChatLayout 
+           friends={friends}
+           session={session}
+           sidebarOptions={sidebarOptions}
+           unseenRequestCount={unseenRequestCount}
+           />
         </div>
             <div className="
         hidden
