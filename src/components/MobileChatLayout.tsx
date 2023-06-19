@@ -63,7 +63,8 @@ const MobileChatLayout: FC<MobileChatLayoutProps> = ({ friends, session, sidebar
                                             <div className='px-4 sm:px-6'>
                                                 <div className='flex items-start justify-between'>
                                                     <Dialog.Title className='text-base font-semibold leading-6 text-gray-900'>
-                                                        Dashboard
+                                                        <Link href="/dashboard"
+                                                            className="flex h-16 shrink-0 items-center">Dashboard</Link>
                                                     </Dialog.Title>
                                                     <div className='ml-3 flex h-7 items-center'>
                                                         <button
