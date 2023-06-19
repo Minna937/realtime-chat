@@ -10,6 +10,7 @@ import FriendRequestsSidebarOption from "@/components/FriendRequestsSidebarOptio
 import { fetchRedis } from "@/helpers/redis";
 import { getFriendsByUserId } from "@/helpers/get-friends-by-user-id";
 import SidebarChatList from "@/components/SidebarChatList";
+import MobileChatLayout from "@/components/MobileChatLayout";
 
 interface LayoutProps {
     children: ReactNode
@@ -45,11 +46,10 @@ const Layout = async ({ children }: LayoutProps) => {
     ).length;
 
     return (
-        <div className="
-    w-full
-    flex
-    h-screen
-    ">
+        <div className="w-full flex h-screen">
+        <div className="md:hidden">
+           <MobileChatLayout />
+        </div>
             <div className="
         flex 
         h-full 
