@@ -1,8 +1,9 @@
 import { FC, Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react'
 import Link from "next/link";
-import { X } from "lucide-react";
-import { buttonVariants } from "./ui/Button";
+import { Menu, X } from "lucide-react";
+import Button, { buttonVariants } from "./ui/Button";
+import { Icons } from "./Icons";
 
 
 interface MobileChatLayoutProps { };
@@ -12,8 +13,13 @@ const MobileChatLayout: FC<MobileChatLayoutProps> = ({ }) => {
     return (
         <div className="fixed bg-zinc-50 border-b border-zinc-200 top-0 inset-x-0 py-2 px-4">
             <div className="w-full flex justify-between items-center">
-              <Link href="/dashboard"
-              className={buttonVariants({variant:"ghost"})}></Link>
+                <Link href="/dashboard"
+                    className={buttonVariants({ variant: "ghost" })}>
+                    <Icons.Logo className="h-6 w-auto text-indigo-600" />
+                </Link>
+                <Button onClick={()=>setOpen(true)} className="gap-4">
+                    Menu <Menu className="h-6 w-6" />
+                </Button>
             </div>
             <Transition.Root show={open} as={Fragment}>
                 <Dialog as="div" className="relative z-10" onClose={setOpen}>

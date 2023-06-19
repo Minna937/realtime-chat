@@ -4,7 +4,7 @@ import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 
-const buttonVariants = cva(
+export const buttonVariants = cva(
     ["active:scale-95",
         "inline-flex",
         "items-center",
