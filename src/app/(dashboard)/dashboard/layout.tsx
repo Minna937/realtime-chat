@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth";
 import { FC, ReactNode } from 'react';
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Icon, Icons } from "@/components/Icons";
+import { Icons } from "@/components/Icons";
 import Image from "next/image";
 import SignOutButton from "@/components/SignOutButton";
 import FriendRequestsSidebarOption from "@/components/FriendRequestsSidebarOption";

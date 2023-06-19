@@ -4,6 +4,7 @@ import Button from "@/components/ui/Button";
 import { FC, useState } from "react";
 import { signIn } from "next-auth/react";
 import { toast } from "react-hot-toast";
+import { Icons } from "@/components/Icons";
 
 const Page: FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -42,7 +43,12 @@ const Page: FC = () => {
         ">
             <div className="w-full flex flex-col items-center max-w-md space-y-4">
                 <div className="flex flex-col items-center gap-8">
-                    logo
+                    <div className="h-2"></div>
+                {/* <Icons.Logo className="
+                h-8
+                w-auto
+                text-indigo-900
+                "/> */}
                     <h2 className="
                     my-6
                     text-center
