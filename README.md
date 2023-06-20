@@ -1,5 +1,5 @@
 # Friendzone
-a full-stack realtime messaging chat application.
+a full-stack real-time messaging chat application.
 
 Live site here: https://friendzone-minna.vercel.app/
 
@@ -30,12 +30,11 @@ Live site here: https://friendzone-minna.vercel.app/
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![js](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 
-
 ### Frameworks and Libraries
 
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
 ![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![socket](https://img.shields.io/badge/Socket.io-010101?&style=for-the-badge&logo=Socket.io&logoColor=white)
+![Pusher](https://a11ybadges.com/badge?logo=pusher)
 
 ### Database:
 
@@ -46,25 +45,35 @@ Live site here: https://friendzone-minna.vercel.app/
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
 
+# Getting started
 
-# FriendZone - A full-stack realtime messaging chat application
+1. Clone this repository (only this branch)
 
-A project to learn modern full-stack development made by Josh.
+2. Install dependencies
 
-## Features
+   ```bash
+   npm install
+   # or
+   yarn
+   ```
+   
+3. Create a **.env** file based on the example with proper settings for your
+   development environment
 
-- Realtime messaging
-- Adding friends and sending friend requests via email
-- Performant database queries with Redis
-- Responsive UI built with TailwindCSS
-- Protection of sensitive routes
-- Google authentication
+4. Make sure the Redis database connection URL is in the **.env** file
 
-- Built with TypeScript
-- TailwindCSS
-- Icons from Lucide
+5. Run the development server:
 
-- Class merging with tailwind-merge
-- Conditional classes with clsx
-- Variants with class-variance-authority
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
+
+6. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   
+7. You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
 
