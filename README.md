@@ -44,6 +44,7 @@ Live site here: https://friendzone-minna.vercel.app/
 
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
+
 # Getting started
 
 1. Clone this repository (only this branch)
