@@ -1,5 +1,5 @@
 # Friendzone
-a full-stack realtime messaging chat application.
+a full-stack real-time messaging chat application.
 
 Live site here: https://friendzone-minna.vercel.app/
 
@@ -35,7 +35,7 @@ Live site here: https://friendzone-minna.vercel.app/
 
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
 ![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![socket](https://img.shields.io/badge/Socket.io-010101?&style=for-the-badge&logo=Socket.io&logoColor=white)
+![Pusher](https://a11ybadges.com/badge?logo=pusher)
 
 ### Database:
 
@@ -45,26 +45,4 @@ Live site here: https://friendzone-minna.vercel.app/
 
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
-
-
-# FriendZone - A full-stack realtime messaging chat application
-
-A project to learn modern full-stack development made by Josh.
-
-## Features
-
-- Realtime messaging
-- Adding friends and sending friend requests via email
-- Performant database queries with Redis
-- Responsive UI built with TailwindCSS
-- Protection of sensitive routes
-- Google authentication
-
-- Built with TypeScript
-- TailwindCSS
-- Icons from Lucide
-
-- Class merging with tailwind-merge
-- Conditional classes with clsx
-- Variants with class-variance-authority
 
