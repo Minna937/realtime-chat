@@ -80,11 +80,13 @@ pnpm dev
 <img src="https://github.com/Minna937/realtime-chat/blob/main/public/gifs/login.gif?raw=true" height=400>
 
 
+
 ### After Log In
 
 On the dashboard, users can add new friends, check friend requests, click on the latest messages to enter the chat and log out.
 
 <img src="https://github.com/Minna937/realtime-chat/blob/main/public/gifs/dashboard.gif?raw=true" height=400>
+
 
 
 ### Adding friend
@@ -94,6 +96,7 @@ The friend request is shown in real-time on another user's page.
 <img src="https://github.com/Minna937/realtime-chat/blob/main/public/gifs/adding%20friend.gif?raw=true" height=400>
 
 
+
 ### New message toast
 
 Users will get a notification if new messages are coming in. By clicking the toast, the user will enter the chat.
@@ -101,9 +104,11 @@ Users will get a notification if new messages are coming in. By clicking the toa
 <img src="https://github.com/Minna937/realtime-chat/blob/main/public/gifs/message%20toast.gif?raw=true" height=400>
 
 
+
 ### Real-time chat
 
 <img src="https://github.com/Minna937/realtime-chat/blob/main/public/gifs/realtime%20message.gif?raw=true" height=400>
+
 
 
 ### Mobile version
