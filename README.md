@@ -80,7 +80,7 @@ The home page provides a user sign in and sign up options. By clicking on the bu
 
 ### Sign In
 
-<img src="./records/login.gif" height=400>](https://github.com/Minna937/realtime-chat/blob/main/public/gifs/login.gif?raw=true)
+<img src="https://github.com/Minna937/realtime-chat/blob/main/public/gifs/login.gif?raw=true" height=400>
 
 ### Sign Up
 
