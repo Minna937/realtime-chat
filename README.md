@@ -44,7 +44,24 @@ Live site here: https://friendzone-minna.vercel.app/
 
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
-First, run the development server:
+# Getting started
+
+1. Clone this repository (only this branch)
+
+2. Install dependencies
+
+   ```bash
+   npm install
+   # or
+   yarn
+   ```
+   
+3. Create a **.env** file based on the example with proper settings for your
+   development environment
+
+4. Make sure the Redis database connection URL is in the **.env** file
+
+5. Run the development server:
 
 ```bash
 npm run dev
@@ -53,8 +70,9 @@ yarn dev
 # or
 pnpm dev
 ```
-- Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-- You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-- This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-  
+
+6. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   
+7. You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
 
