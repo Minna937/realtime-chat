@@ -73,37 +73,47 @@ pnpm dev
 ```
 
 6. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   
 
 ### Sign In
 
 <img src="https://github.com/Minna937/realtime-chat/blob/main/public/gifs/login.gif?raw=true" height=400>
 
+
 ### After Log In
 
-On the dashboard, users can add new friend, check friend request, click on the latest messages to enter the chat, and logout.
+On the dashboard, users can add new friends, check friend requests, click on the latest messages to enter the chat and log out.
+
 <img src="https://github.com/Minna937/realtime-chat/blob/main/public/gifs/dashboard.gif?raw=true" height=400>
+
 
 ### Adding friend
 
-The friend request is shown in realtime at another user's page.
-<img src="https://github.com/Minna937/realtime-chat/blob/main/public/gifs/adding%20friend.gif?raw=true">
+The friend request is shown in real-time on another user's page.
+
+<img src="https://github.com/Minna937/realtime-chat/blob/main/public/gifs/adding%20friend.gif?raw=true" height=400>
+
 
 ### New message toast
 
-Users will get notification if there are new messages coming in.
-<img src="https://github.com/Minna937/realtime-chat/blob/main/public/gifs/message%20toast.gif?raw=true">
+Users will get a notification if new messages are coming in. By clicking the toast, the user will enter the chat.
+
+<img src="https://github.com/Minna937/realtime-chat/blob/main/public/gifs/message%20toast.gif?raw=true" height=400>
+
 
 ### Real-time chat
 
-<img src="https://github.com/Minna937/realtime-chat/blob/main/public/gifs/realtime%20message.gif?raw=true">
+<img src="https://github.com/Minna937/realtime-chat/blob/main/public/gifs/realtime%20message.gif?raw=true" height=400>
+
 
 ### Mobile version
 
-Users with smaller screen have a slideover menu.
-<img src="https://github.com/Minna937/realtime-chat/blob/main/public/gifs/mobileslideover.gif?raw=true">
+Users with a smaller screen have a slide-over menu.
+
+<img src="https://github.com/Minna937/realtime-chat/blob/main/public/gifs/mobileslideover.gif?raw=true" height=400>
 
 
 ### Log out
 
-<img src="https://github.com/Minna937/realtime-chat/blob/main/public/gifs/logout.gif?raw=true">
+<img src="https://github.com/Minna937/realtime-chat/blob/main/public/gifs/logout.gif?raw=true" height=400>
 
