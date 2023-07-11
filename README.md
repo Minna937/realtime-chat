@@ -1,7 +1,7 @@
 # Friendzone
 a full-stack real-time messaging chat application.
 
-Live site here: https://friendzone-minna.vercel.app/
+Live site here: https://friendzone-one.vercel.app
 
 ## Features
 
